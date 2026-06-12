@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataShield | Cumplimiento Legal y Privacidad de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de colores B2B (Corporativo + Tech) */
+        :root {
+            --primary: #0F172A;     /* Azul noche profundo */
+            --brand: #2563EB;       /* Azul eléctrico tech */
+            --accent: #10B981;      /* Verde esmeralda (Cumplimiento/Aprobado) */
+            --bg-light: #F8FAFC;    /* Gris muy claro para fondo */
+            --text-main: #334155;   /* Gris pizarra para lectura */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            color: var(--brand);
+            font-size: 1.8rem;
+        }
+
+        .nav-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--brand);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 5%;
+            background: linear-gradient(145deg, #ffffff 0%, var(--bg-light) 100%);
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .badge {
+            background-color: #DCFCE7;
+            color: #166534;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--brand);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-main);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background-color: var(--brand);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid #E2E8F0;
+            transition: border-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--brand);
+        }
+
+        /* Simulación de la Interfaz del Software (Mockup) */
+        .hero-image {
+            background: var(--primary);
+            border-radius: 12px;
+            width: 500px;
+            height: 350px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid #334155;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 15px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #EF4444; }
+        .dot.yellow { background: #F59E0B; }
+        .dot.green { background: #10B981; }
+
+        .mockup-body {
+            color: #94A3B8;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .mockup-body span.success { color: var(--accent); }
+        .mockup-body span.warning { color: #F59E0B; }
+
+        /* --- SECCIÓN DE SOLUCIONES (FEATURES) --- */
+        .features {
+            padding: 5rem 5%;
+            background-color: white;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .features-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 2.5rem;
+            border-radius: 12px;
+            background: var(--bg-light);
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: var(--brand);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary);
+            color: #94A3B8;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 3rem;
+            }
+            .hero-content {
+                margin-bottom: 3rem;
+            }
+            .cta-group {
+                justify-content: center;
+            }
+            .hero-image {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">🛡️</span> DataShield
+        </div>
+        <a href="#" class="nav-btn">Acceso a Clientes</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">Legal Ops & Compliance</div>
+            <h1>Protege a tu empresa. <span>Automatiza el cumplimiento.</span></h1>
+            <p>Plataforma SaaS para gestionar auditorías de Protección de Datos Personales (Ley 29733), automatizar la generación de cláusulas y mitigar riesgos de multas ante la ANPD.</p>
+            <div class="cta-group">
+                <a href="#soluciones" class="btn-primary">Explorar Plataforma</a>
+                <a href="#" class="btn-secondary">Agendar Demo</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="mockup-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="mockup-body">
+                <p>> Iniciando escáner de bases de datos...</p>
+                <p>> Analizando formularios web...</p>
+                <p>> <span class="success">✓ Flujo de consentimiento explícito validado.</span></p>
+                <p>> Verificando Libro de Reclamaciones...</p>
+                <p>> <span class="warning">⚠ Alerta: Falta cláusula ARCO en Landing 3.</span></p>
+                <br>
+                <p>> <strong>Estado de Riesgo Legal: <span style="color:white">Mitigado en 85%</span></strong></p>
+                <p>> Generando reporte de auditoría...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="soluciones">
+        <div class="features-header">
+            <h2>Ingeniería Legal para Empresas Modernas</h2>
+            <p>Dejamos atrás los Excel manuales. Operamos tu cumplimiento en la nube.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">📂</div>
+                <h3>Inventario de Bancos de Datos</h3>
+                <p>Mapeamos y centralizamos el registro de toda la información personal que captura tu empresa, preparándola para su inscripción automática ante el Ministerio de Justicia.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Generador de Cláusulas Dinámicas</h3>
+                <p>A través de nuestra API, integramos textos legales actualizados directamente en tus formularios web, garantizando el consentimiento informado, previo y expreso.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚖️</div>
+                <h3>Gestor de Derechos ARCO</h3>
+                <p>Un panel centralizado para recibir, trazar y responder automáticamente a las solicitudes de Acceso, Rectificación, Cancelación y Oposición de tus clientes dentro del plazo de ley.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Desarrollado para el Demo Day 2026 - Universidad Científica del Sur</p>
+        <p>Proyecto <span>DER 614 | Legal Tech</span></p>
+    </footer>
+
+</body>
+</html>
