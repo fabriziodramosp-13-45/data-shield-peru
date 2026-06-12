@@ -265,6 +265,29 @@
                 max-width: 500px;
             }
         }
+        /* Navegación suave al hacer clic en los botones */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animación para que el terminal parezca estar procesando en vivo */
+        .mockup-body p, .mockup-body br {
+            opacity: 0;
+            animation: aparecer 0.5s forwards;
+        }
+        
+        .mockup-body p:nth-child(1) { animation-delay: 0.5s; }
+        .mockup-body p:nth-child(2) { animation-delay: 1.5s; }
+        .mockup-body p:nth-child(3) { animation-delay: 2.5s; }
+        .mockup-body p:nth-child(4) { animation-delay: 3.5s; }
+        .mockup-body p:nth-child(5) { animation-delay: 4.5s; }
+        .mockup-body br:nth-child(6) { animation-delay: 4.5s; }
+        .mockup-body p:nth-child(7) { animation-delay: 5.5s; }
+        .mockup-body p:nth-child(8) { animation-delay: 6.5s; }
+
+        @keyframes aparecer {
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
