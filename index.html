@@ -1,363 +1,1667 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataShield | Cumplimiento Legal y Privacidad de Datos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* Paleta de colores B2B (Corporativo + Tech) */
-        :root {
-            --primary: #0F172A;     /* Azul noche profundo */
-            --brand: #2563EB;       /* Azul eléctrico tech */
-            --accent: #10B981;      /* Verde esmeralda (Cumplimiento/Aprobado) */
-            --bg-light: #F8FAFC;    /* Gris muy claro para fondo */
-            --text-main: #334155;   /* Gris pizarra para lectura */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DataShield Peru: LegalTech para privacidad de datos, cumplimiento, solicitudes ARCO y automatización legal." />
+  <title>DataShield Peru | LegalTech para Cumplimiento y Privacidad</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-2: #243044;
+      --muted: #64748b;
+      --line: #dbe3ef;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --blue: #2563eb;
+      --teal: #089e8e;
+      --green: #16a34a;
+      --amber: #f59e0b;
+      --red: #e5484d;
+      --violet: #6d5bd0;
+      --radius: 8px;
+      --shadow: 0 20px 55px rgba(17, 24, 39, 0.12);
+      --shadow-soft: 0 10px 28px rgba(17, 24, 39, 0.08);
+    }
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            line-height: 1.7;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-        /* --- NAVEGACIÓN --- */
-        nav {
-            background-color: #ffffff;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    body.no-scroll { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
 
-        .logo-icon {
-            color: var(--brand);
-            font-size: 1.8rem;
-        }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.93);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
 
-        .nav-btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+    .topbar {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-        .nav-btn:hover {
-            background-color: var(--brand);
-        }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5rem 5%;
-            background: linear-gradient(145deg, #ffffff 0%, var(--bg-light) 100%);
-            min-height: 80vh;
-        }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #111827, #1d355c 55%, var(--teal));
+      color: white;
+      box-shadow: 0 10px 20px rgba(8, 158, 142, 0.22);
+    }
 
-        .hero-content {
-            max-width: 600px;
-        }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 750;
+    }
 
-        .badge {
-            background-color: #DCFCE7;
-            color: #166534;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
 
-        .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.1;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-        }
+    .nav-links a {
+      padding: 0.68rem 0.78rem;
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
 
-        .hero h1 span {
-            color: var(--brand);
-        }
+    .nav-links a:hover {
+      background: #f1f5f9;
+      color: var(--ink);
+    }
 
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-main);
-        }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
 
-        .cta-group {
-            display: flex;
-            gap: 15px;
-        }
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+    }
 
-        .btn-primary {
-            background-color: var(--brand);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-            transition: transform 0.2s;
-        }
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: 0.18s ease;
+    }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-        }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { background: var(--blue); color: white; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24); }
+    .button-secondary { background: white; color: var(--ink); border-color: var(--line); }
+    .button-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 
-        .btn-secondary {
-            background-color: white;
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 1px solid #E2E8F0;
-            transition: border-color 0.2s;
-        }
+    .icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
 
-        .btn-secondary:hover {
-            border-color: var(--brand);
-        }
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(180deg, #ffffff, #f5f7fb);
+      background-size: 42px 42px, auto;
+      border-bottom: 1px solid var(--line);
+    }
 
-        /* Simulación de la Interfaz del Software (Mockup) */
-        .hero-image {
-            background: var(--primary);
-            border-radius: 12px;
-            width: 500px;
-            height: 350px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            border: 1px solid #334155;
-        }
+    .hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 58px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+      gap: 42px;
+      align-items: center;
+    }
 
-        .mockup-header {
-            display: flex;
-            gap: 8px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 15px;
-        }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      padding: 0.45rem 0.75rem;
+      border: 1px solid #b7e7df;
+      border-radius: 999px;
+      background: #ddf7f3;
+      color: #075f55;
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
 
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot.red { background: #EF4444; }
-        .dot.yellow { background: #F59E0B; }
-        .dot.green { background: #10B981; }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--teal);
+      box-shadow: 0 0 0 6px rgba(8, 158, 142, 0.15);
+    }
 
-        .mockup-body {
-            color: #94A3B8;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
+    h1, h2, h3, p { margin-top: 0; }
 
-        .mockup-body span.success { color: var(--accent); }
-        .mockup-body span.warning { color: #F59E0B; }
+    h1 {
+      margin-bottom: 1.15rem;
+      font-size: clamp(2.25rem, 5vw, 3.55rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
 
-        /* --- SECCIÓN DE SOLUCIONES (FEATURES) --- */
-        .features {
-            padding: 5rem 5%;
-            background-color: white;
-        }
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.12;
+    }
 
-        .features-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+    .hero-copy {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
 
-        .features-header h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-        }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.7rem;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .proof-strip {
+      margin-top: 1.8rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.74);
+      overflow: hidden;
+    }
 
-        .card {
-            padding: 2.5rem;
-            border-radius: 12px;
-            background: var(--bg-light);
-            border: 1px solid #E2E8F0;
-            transition: all 0.3s;
-        }
+    .proof-strip span {
+      padding: 0.85rem 1rem;
+      color: var(--muted);
+      font-size: 0.87rem;
+      font-weight: 800;
+      border-right: 1px solid var(--line);
+    }
 
-        .card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-color: var(--brand);
-            transform: translateY(-5px);
-        }
+    .proof-strip span:last-child { border-right: 0; }
 
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
+    .product-shell {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #111827;
+      color: #e8edf8;
+      box-shadow: var(--shadow);
+    }
 
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+    .product-top {
+      min-height: 54px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+    }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--primary);
-            color: #94A3B8;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-        }
+    .window-dots { display: flex; gap: 0.45rem; }
+    .window-dots i { width: 10px; height: 10px; border-radius: 99px; }
+    .window-dots i:nth-child(1) { background: var(--red); }
+    .window-dots i:nth-child(2) { background: var(--amber); }
+    .window-dots i:nth-child(3) { background: var(--teal); }
 
-        footer span {
-            color: white;
-            font-weight: bold;
-        }
+    .product-body {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 1rem;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 3rem;
-            }
-            .hero-content {
-                margin-bottom: 3rem;
-            }
-            .cta-group {
-                justify-content: center;
-            }
-            .hero-image {
-                width: 100%;
-                max-width: 500px;
-            }
-        }
-        /* Navegación suave al hacer clic en los botones */
-        html {
-            scroll-behavior: smooth;
-        }
+    .side-rail {
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.04);
+    }
 
-        /* Animación para que el terminal parezca estar procesando en vivo */
-        .mockup-body p, .mockup-body br {
-            opacity: 0;
-            animation: aparecer 0.5s forwards;
-        }
-        
-        .mockup-body p:nth-child(1) { animation-delay: 0.5s; }
-        .mockup-body p:nth-child(2) { animation-delay: 1.5s; }
-        .mockup-body p:nth-child(3) { animation-delay: 2.5s; }
-        .mockup-body p:nth-child(4) { animation-delay: 3.5s; }
-        .mockup-body p:nth-child(5) { animation-delay: 4.5s; }
-        .mockup-body br:nth-child(6) { animation-delay: 4.5s; }
-        .mockup-body p:nth-child(7) { animation-delay: 5.5s; }
-        .mockup-body p:nth-child(8) { animation-delay: 6.5s; }
+    .rail-item {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 0.6rem;
+      border-radius: 7px;
+      color: #a9b4c7;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
 
-        @keyframes aparecer {
-            to { opacity: 1; }
-        }
-    </style>
+    .rail-item.active {
+      background: rgba(37, 99, 235, 0.22);
+      color: white;
+    }
+
+    .rail-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .metric, .flow, .audit-mini {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .metric {
+      min-height: 112px;
+      padding: 0.9rem;
+    }
+
+    .metric span, .flow span {
+      display: block;
+      color: #9aa7bc;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 0.35rem;
+      color: white;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      margin-top: 0.7rem;
+      padding: 0.28rem 0.48rem;
+      border-radius: 999px;
+      background: rgba(8, 158, 142, 0.15);
+      color: #9ff0e4;
+      font-size: 0.74rem;
+      font-weight: 900;
+    }
+
+    .flow { padding: 1rem; }
+
+    .flow-visual {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      margin-top: 0.85rem;
+    }
+
+    .flow-node {
+      min-height: 76px;
+      padding: 0.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-node b { display: block; color: white; font-size: 0.82rem; }
+    .flow-node small { color: #9aa7bc; font-weight: 800; }
+
+    .flow-node::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: var(--teal);
+    }
+
+    .flow-node:nth-child(2)::after { background: var(--blue); }
+    .flow-node:nth-child(3)::after { background: var(--amber); }
+
+    .audit-mini {
+      margin-top: 0.75rem;
+      padding: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .bar {
+      flex: 1;
+      height: 9px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .bar i {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      border-radius: inherit;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      max-width: 64ch;
+      color: var(--muted);
+    }
+
+    .surface {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.7fr);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .tool-panel { padding: 1.25rem; }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    label, .field span {
+      color: var(--ink-2);
+      font-size: 0.88rem;
+      font-weight: 900;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.38rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.74rem 0.82rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      color: var(--ink);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 260px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .check-chip, .task {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.82rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f9fbff;
+    }
+
+    .check-chip input, .task input {
+      width: 18px;
+      height: 18px;
+      margin-top: 0.16rem;
+      accent-color: var(--teal);
+    }
+
+    .check-chip strong { display: block; font-size: 0.92rem; }
+    .check-chip small { color: var(--muted); font-weight: 750; }
+
+    .score-wrap {
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: 142px 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .score-ring {
+      --angle: 250deg;
+      width: 142px;
+      height: 142px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--teal) var(--angle), #e8edf4 0);
+    }
+
+    .score-ring span {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: white;
+      font-size: 1.8rem;
+      font-weight: 950;
+    }
+
+    .risk-level {
+      display: inline-flex;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      background: #e4f8ea;
+      color: #126b31;
+      font-size: 0.82rem;
+      font-weight: 950;
+    }
+
+    .risk-level.medium { background: #fff3d8; color: #85570a; }
+    .risk-level.high, .risk-level.critical { background: #ffe7e8; color: #971f26; }
+
+    .action-list {
+      display: grid;
+      gap: 0.65rem;
+      padding: 0;
+      margin: 0.9rem 0 0;
+      list-style: none;
+    }
+
+    .action-list li {
+      padding: 0.72rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f9fbff;
+      color: var(--ink-2);
+      font-weight: 800;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .module {
+      min-height: 222px;
+      padding: 1.2rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 1rem;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      color: white;
+    }
+
+    .module:nth-child(1) .module-icon { background: var(--blue); }
+    .module:nth-child(2) .module-icon { background: var(--teal); }
+    .module:nth-child(3) .module-icon { background: var(--violet); }
+    .module:nth-child(4) .module-icon { background: var(--amber); }
+
+    .module p { color: var(--muted); font-size: 0.94rem; }
+    .module-foot { color: var(--ink); font-size: 0.86rem; font-weight: 950; }
+
+    .wide-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1fr);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .form-actions, .output-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .form-actions { margin-top: 1rem; }
+
+    .output-toolbar {
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+    }
+
+    .copy-state {
+      min-height: 1.2rem;
+      color: var(--teal);
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 0.82rem;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--ink-2);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .deadline {
+      display: inline-flex;
+      min-width: 104px;
+      justify-content: center;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      background: #e4f8ea;
+      color: #126b31;
+      font-size: 0.8rem;
+      font-weight: 950;
+    }
+
+    .deadline.warn { background: #fff3d8; color: #85570a; }
+    .deadline.late { background: #ffe7e8; color: #971f26; }
+
+    .mini-select {
+      min-width: 142px;
+      padding: 0.48rem 0.55rem;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      color: var(--ink);
+    }
+
+    .checklist-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .progress-number {
+      display: block;
+      margin: 0.4rem 0 0.75rem;
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .progress-track {
+      height: 10px;
+      border-radius: 99px;
+      background: #e8edf4;
+      overflow: hidden;
+    }
+
+    .progress-track i {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+    }
+
+    .checklist-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .task-list {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .api-band {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1fr);
+      gap: 1rem;
+    }
+
+    .api-copy {
+      padding: 1.4rem;
+      background: var(--ink);
+      color: white;
+    }
+
+    .api-copy p { color: #b8c3d6; }
+
+    .code-window {
+      padding: 1rem;
+      background: #0b1220;
+      color: #d7e2f6;
+      overflow-x: auto;
+    }
+
+    pre {
+      margin: 0;
+      font-family: Consolas, "Liberation Mono", monospace;
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+
+    .footer {
+      padding: 38px 0;
+      background: #0f172a;
+      color: #b7c3d3;
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .footer strong { color: white; }
+    .footer p { margin: 0; }
+
+    .legal-note {
+      max-width: 760px;
+      color: #93a1b7;
+      font-size: 0.84rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .modal[hidden], .toast[hidden] { display: none; }
+
+    .modal-dialog {
+      width: min(520px, 100%);
+      padding: 1.2rem;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 90;
+      max-width: 360px;
+      padding: 0.9rem 1rem;
+      border: 1px solid #b7e7df;
+      border-radius: var(--radius);
+      background: #ddf7f3;
+      color: #075f55;
+      box-shadow: var(--shadow-soft);
+      font-weight: 900;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner, .grid-2, .wide-grid, .api-band { grid-template-columns: 1fr; }
+      .product-body { grid-template-columns: 1fr; }
+      .side-rail { display: grid; grid-template-columns: repeat(4, 1fr); }
+      .module-grid { grid-template-columns: repeat(2, 1fr); }
+      .checklist-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 820px) {
+      .menu-toggle { display: inline-grid; place-items: center; }
+      .nav-links {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 66px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.7rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: white;
+        box-shadow: var(--shadow-soft);
+      }
+      .nav-links.open { display: flex; }
+      .header-actions .button-secondary { display: none; }
+      .proof-strip, .preview-grid, .field-grid, .checks, .checklist-board, .flow-visual { grid-template-columns: 1fr; }
+      .section-heading { display: block; }
+      .score-wrap { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .topbar, .hero-inner, .section, .footer-inner { width: calc(100% - 24px); }
+      .brand small { display: none; }
+      .hero-actions, .form-actions, .output-toolbar { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .side-rail { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 3v5c0 4.8-2.8 8.2-7 10-4.2-1.8-7-5.2-7-10V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>DataShield <small>LegalTech Peru</small></span>
+      </a>
 
-    <nav>
-        <div class="logo">
-            <span class="logo-icon">🛡️</span> DataShield
-        </div>
-        <a href="#" class="nav-btn">Acceso a Clientes</a>
-    </nav>
+      <nav class="nav-links" id="navLinks">
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#clausulas">Cláusulas</a>
+        <a href="#arco">ARCO</a>
+        <a href="#auditoria">Auditoría</a>
+      </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="badge">Legal Ops & Compliance</div>
-            <h1>Protege a tu empresa. <span>Automatiza el cumplimiento.</span></h1>
-            <p>Plataforma SaaS para gestionar auditorías de Protección de Datos Personales (Ley 29733), automatizar la generación de cláusulas y mitigar riesgos de multas ante la ANPD.</p>
-            <div class="cta-group">
-                <a href="#soluciones" class="btn-primary">Explorar Plataforma</a>
-                <a href="#" class="btn-secondary">Agendar Demo</a>
-            </div>
+      <div class="header-actions">
+        <button class="button button-secondary" type="button" data-open-demo>Demo</button>
+        <a class="button button-primary" href="#diagnostico">Evaluar</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Ley 29733 + Legal Ops + Automatización</span>
+          <h1>Privacidad de datos convertida en un sistema operativo legal.</h1>
+          <p class="hero-copy">Una plataforma para mapear bancos de datos, medir riesgos, generar cláusulas, controlar solicitudes ARCO y preparar auditorías con trazabilidad digital.</p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#diagnostico">Iniciar diagnóstico</a>
+            <a class="button button-ghost" href="#clausulas">Generar cláusula</a>
+          </div>
+
+          <div class="proof-strip">
+            <span>Riesgo legal visible</span>
+            <span>Documentos trazables</span>
+            <span>Operación lista para auditoría</span>
+          </div>
         </div>
 
-        <div class="hero-image">
-            <div class="mockup-header">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
+        <div class="product-shell">
+          <div class="product-top">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <strong>Panel de Cumplimiento</strong>
+          </div>
+
+          <div class="product-body">
+            <aside class="side-rail">
+              <div class="rail-item active"><span class="rail-dot"></span> Riesgo</div>
+              <div class="rail-item"><span class="rail-dot"></span> Bancos</div>
+              <div class="rail-item"><span class="rail-dot"></span> ARCO</div>
+              <div class="rail-item"><span class="rail-dot"></span> Auditoría</div>
+            </aside>
+
+            <div>
+              <div class="preview-grid">
+                <div class="metric">
+                  <span>Cobertura actual</span>
+                  <strong id="heroCoverage">71%</strong>
+                  <em class="pill">En mejora</em>
+                </div>
+                <div class="metric">
+                  <span>Solicitudes ARCO</span>
+                  <strong id="heroArcoCount">3</strong>
+                  <em class="pill">SLA activo</em>
+                </div>
+              </div>
+
+              <div class="flow">
+                <span>Flujo legaltech</span>
+                <div class="flow-visual">
+                  <div class="flow-node"><b>Captura</b><small>Consentimiento</small></div>
+                  <div class="flow-node"><b>Control</b><small>Riesgos</small></div>
+                  <div class="flow-node"><b>Evidencia</b><small>Auditoría</small></div>
+                </div>
+              </div>
+
+              <div class="audit-mini">
+                <strong>Checklist</strong>
+                <div class="bar"><i id="heroChecklistBar"></i></div>
+                <span id="heroChecklistText">0%</span>
+              </div>
             </div>
-            <div class="mockup-body">
-                <p>> Iniciando escáner de bases de datos...</p>
-                <p>> Analizando formularios web...</p>
-                <p>> <span class="success">✓ Flujo de consentimiento explícito validado.</span></p>
-                <p>> Verificando Libro de Reclamaciones...</p>
-                <p>> <span class="warning">⚠ Alerta: Falta cláusula ARCO en Landing 3.</span></p>
-                <br>
-                <p>> <strong>Estado de Riesgo Legal: <span style="color:white">Mitigado en 85%</span></strong></p>
-                <p>> Generando reporte de auditoría...</p>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="features" id="soluciones">
-        <div class="features-header">
-            <h2>Ingeniería Legal para Empresas Modernas</h2>
-            <p>Dejamos atrás los Excel manuales. Operamos tu cumplimiento en la nube.</p>
+    <section class="section" id="diagnostico">
+      <div class="section-heading">
+        <div>
+          <h2>Diagnóstico de riesgo</h2>
+          <p>Calcula una lectura inicial del cumplimiento en privacidad, seguridad documental y atención de titulares.</p>
         </div>
+        <button class="button button-secondary" type="button" id="resetRisk">Restaurar evaluación</button>
+      </div>
 
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">📂</div>
-                <h3>Inventario de Bancos de Datos</h3>
-                <p>Mapeamos y centralizamos el registro de toda la información personal que captura tu empresa, preparándola para su inscripción automática ante el Ministerio de Justicia.</p>
+      <div class="grid-2">
+        <form class="surface tool-panel" id="riskForm">
+          <h3>Perfil de tratamiento</h3>
+          <p class="subtle">La matriz pondera exposición, volumen, tipo de datos y controles operativos.</p>
+
+          <div class="field-grid">
+            <label class="field">
+              Sector
+              <select name="sector">
+                <option value="ecommerce">E-commerce / retail</option>
+                <option value="health">Salud</option>
+                <option value="finance">Finanzas</option>
+                <option value="education">Educación</option>
+                <option value="saas">SaaS B2B</option>
+              </select>
+            </label>
+
+            <label class="field">
+              Volumen mensual
+              <select name="volume">
+                <option value="small">Hasta 5,000 registros</option>
+                <option value="medium" selected>5,001 a 50,000 registros</option>
+                <option value="large">50,001 a 250,000 registros</option>
+                <option value="enterprise">Más de 250,000 registros</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="checks">
+            <label class="check-chip"><input type="checkbox" name="bankRegistered"><span><strong>Bancos registrados</strong><small>Inventario actualizado</small></span></label>
+            <label class="check-chip"><input type="checkbox" name="consentTrace"><span><strong>Consentimiento trazable</strong><small>Fecha, fuente y finalidad</small></span></label>
+            <label class="check-chip"><input type="checkbox" name="arcoChannel"><span><strong>Canal ARCO activo</strong><small>Recepción y respuesta</small></span></label>
+            <label class="check-chip"><input type="checkbox" name="processorContracts"><span><strong>Contratos con encargados</strong><small>Proveedores y transferencias</small></span></label>
+            <label class="check-chip"><input type="checkbox" name="incidentPlan"><span><strong>Plan de incidentes</strong><small>Registro y escalamiento</small></span></label>
+            <label class="check-chip"><input type="checkbox" name="sensitiveData"><span><strong>Datos sensibles</strong><small>Salud, biometría u otros</small></span></label>
+          </div>
+        </form>
+
+        <aside class="surface tool-panel" aria-live="polite">
+          <h3>Resultado operativo</h3>
+          <p class="subtle">Cobertura estimada y plan de acción priorizado.</p>
+
+          <div class="score-wrap">
+            <div class="score-ring" id="scoreRing"><span id="coverageScore">71%</span></div>
+            <div>
+              <span class="risk-level" id="riskLevel">Riesgo medio</span>
+              <p class="subtle" id="riskSummary">Hay controles esenciales pendientes para reducir exposición regulatoria.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🤖</div>
-                <h3>Generador de Cláusulas Dinámicas</h3>
-                <p>A través de nuestra API, integramos textos legales actualizados directamente en tus formularios web, garantizando el consentimiento informado, previo y expreso.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚖️</div>
-                <h3>Gestor de Derechos ARCO</h3>
-                <p>Un panel centralizado para recibir, trazar y responder automáticamente a las solicitudes de Acceso, Rectificación, Cancelación y Oposición de tus clientes dentro del plazo de ley.</p>
-            </div>
-        </div>
+          </div>
+
+          <ul class="action-list" id="actionList"></ul>
+        </aside>
+      </div>
     </section>
 
-    <footer>
-        <p>Desarrollado para el Demo Day 2026 - Universidad Científica del Sur</p>
-        <p>Proyecto <span>DER 614 | Legal Tech</span></p>
-    </footer>
+    <section class="section" id="modulos">
+      <div class="section-heading">
+        <div>
+          <h2>Suite legaltech</h2>
+          <p>Módulos pensados para equipos legales, operaciones, marketing, tecnología y cumplimiento.</p>
+        </div>
+      </div>
 
+      <div class="module-grid">
+        <article class="surface module">
+          <div class="module-icon">BD</div>
+          <h3>Inventario de bancos</h3>
+          <p>Centraliza bases, finalidades, titulares, ubicaciones, encargados y evidencias documentales.</p>
+          <span class="module-foot">Registro vivo</span>
+        </article>
+
+        <article class="surface module">
+          <div class="module-icon">OK</div>
+          <h3>Consentimiento verificable</h3>
+          <p>Conecta formularios, versiones de cláusulas, pruebas de aceptación y trazas de auditoría.</p>
+          <span class="module-foot">Evidencia digital</span>
+        </article>
+
+        <article class="surface module">
+          <div class="module-icon">AR</div>
+          <h3>Gestión ARCO</h3>
+          <p>Controla responsables, estados, vencimientos internos, respuestas y anexos por solicitud.</p>
+          <span class="module-foot">SLA visible</span>
+        </article>
+
+        <article class="surface module">
+          <div class="module-icon">AI</div>
+          <h3>Auditoría inteligente</h3>
+          <p>Prioriza brechas, crea planes de remediación y prepara reportes para revisión legal.</p>
+          <span class="module-foot">Acciones priorizadas</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="clausulas">
+      <div class="section-heading">
+        <div>
+          <h2>Generador de cláusulas</h2>
+          <p>Produce una base editable para formularios, contratos, landing pages y campañas.</p>
+        </div>
+        <span class="subtle"><strong id="clauseCounter">0</strong> cláusulas creadas en esta sesión</span>
+      </div>
+
+      <div class="wide-grid">
+        <form class="surface tool-panel" id="clauseForm">
+          <h3>Parámetros del texto</h3>
+
+          <div class="field-grid">
+            <label class="field">Empresa responsable <input name="company" value="DataShield Peru S.A.C."></label>
+            <label class="field">Canal <select name="channel"><option>Formulario web</option><option>Contrato digital</option><option>Aplicación móvil</option><option>Campaña comercial</option></select></label>
+            <label class="field">Finalidad principal <input name="purpose" value="gestionar la relación comercial y responder solicitudes"></label>
+            <label class="field">Datos tratados <input name="dataTypes" value="nombres, DNI, correo, teléfono y preferencias de contacto"></label>
+            <label class="field">Conservación <input name="retention" value="mientras exista relación contractual y por los plazos legales aplicables"></label>
+            <label class="field">Contacto ARCO <input name="contact" value="privacidad@datashield.pe"></label>
+          </div>
+
+          <label class="check-chip" style="margin-top: 1rem;">
+            <input type="checkbox" name="thirdParties" checked>
+            <span><strong>Incluye encargados o proveedores</strong><small>Hosting, CRM, analítica o soporte</small></span>
+          </label>
+
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Generar texto</button>
+            <button class="button button-secondary" type="button" id="clearClause">Limpiar</button>
+          </div>
+        </form>
+
+        <div class="surface tool-panel">
+          <div class="output-toolbar">
+            <strong>Cláusula editable</strong>
+            <div class="form-actions" style="margin-top: 0;">
+              <button class="button button-secondary" type="button" id="copyClause">Copiar</button>
+              <button class="button button-secondary" type="button" id="downloadClause">Descargar TXT</button>
+            </div>
+          </div>
+          <textarea id="clauseOutput" readonly></textarea>
+          <div class="copy-state" id="copyState" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="arco">
+      <div class="section-heading">
+        <div>
+          <h2>Gestor ARCO</h2>
+          <p>Registra solicitudes, calcula vencimientos internos y mantiene el estado operativo en un solo panel.</p>
+        </div>
+        <button class="button button-secondary" type="button" id="seedArco">Cargar ejemplos</button>
+      </div>
+
+      <div class="wide-grid">
+        <form class="surface tool-panel" id="arcoForm">
+          <h3>Nueva solicitud</h3>
+
+          <div class="field-grid">
+            <label class="field">Titular <input name="holder" required placeholder="Nombre del titular"></label>
+            <label class="field">Derecho <select name="type"><option>Acceso</option><option>Rectificación</option><option>Cancelación</option><option>Oposición</option></select></label>
+            <label class="field">Fecha de recepción <input name="received" type="date" required></label>
+            <label class="field">Canal <select name="channel"><option>Web</option><option>Email</option><option>Presencial</option><option>Call center</option></select></label>
+          </div>
+
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Agregar solicitud</button>
+          </div>
+
+          <p class="subtle" style="margin-top: 1rem;">SLA interno referencial: acceso 20 días hábiles; rectificación, cancelación y oposición 10 días hábiles.</p>
+        </form>
+
+        <div class="surface tool-panel">
+          <div class="output-toolbar">
+            <strong>Solicitudes activas</strong>
+            <span class="subtle"><strong id="openArcoCount">0</strong> abiertas</span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Titular</th>
+                  <th>Derecho</th>
+                  <th>Vence</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="arcoTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="auditoria">
+      <div class="section-heading">
+        <div>
+          <h2>Checklist de auditoría</h2>
+          <p>Convierte el cumplimiento en tareas verificables antes de una revisión interna o externa.</p>
+        </div>
+      </div>
+
+      <div class="checklist-layout">
+        <aside class="surface tool-panel">
+          <h3>Avance general</h3>
+          <strong class="progress-number" id="auditProgress">0%</strong>
+          <div class="progress-track"><i id="auditProgressBar"></i></div>
+          <p class="subtle" id="auditSummary" style="margin-top: 0.9rem;">Completa tareas críticas para elevar la preparación documental.</p>
+        </aside>
+
+        <div class="checklist-board" id="checklistBoard">
+          <section class="surface tool-panel">
+            <h3>Gobierno</h3>
+            <div class="task-list">
+              <label class="task"><input type="checkbox" data-task="policy"> Política de privacidad versionada</label>
+              <label class="task"><input type="checkbox" data-task="owners"> Responsable interno designado</label>
+              <label class="task"><input type="checkbox" data-task="inventory"> Inventario de bancos de datos</label>
+            </div>
+          </section>
+
+          <section class="surface tool-panel">
+            <h3>Operación</h3>
+            <div class="task-list">
+              <label class="task"><input type="checkbox" data-task="consents"> Evidencia de consentimientos</label>
+              <label class="task"><input type="checkbox" data-task="vendors"> Contratos con encargados</label>
+              <label class="task"><input type="checkbox" data-task="arco"> Procedimiento ARCO publicado</label>
+            </div>
+          </section>
+
+          <section class="surface tool-panel">
+            <h3>Seguridad</h3>
+            <div class="task-list">
+              <label class="task"><input type="checkbox" data-task="access"> Control de accesos</label>
+              <label class="task"><input type="checkbox" data-task="incidents"> Bitácora de incidentes</label>
+              <label class="task"><input type="checkbox" data-task="retention"> Matriz de conservación</label>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="api-band">
+        <div class="surface api-copy">
+          <h2>Preparada para integrarse con tecnología real</h2>
+          <p>El concepto puede crecer hacia API de consentimiento, repositorio de evidencias, firma digital, CRM, automatización documental y alertas de vencimiento.</p>
+          <button class="button button-primary" type="button" data-open-demo>Solicitar roadmap</button>
+        </div>
+
+        <div class="surface code-window">
+<pre><code>POST /api/consents
+{
+  "holder": "cliente@datashield.pe",
+  "purpose": "contacto comercial",
+  "clauseVersion": "LPDP-2026-01",
+  "evidence": {
+    "source": "landing-data-shield",
+    "timestamp": "2026-06-12T18:00:00-05:00"
+  }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p><strong>DataShield Peru</strong> | Proyecto DER 614 LegalTech</p>
+        <p class="legal-note">Contenido demostrativo y referencial. Las cláusulas, plazos y controles deben ser validados con asesoría legal antes de su uso en producción.</p>
+      </div>
+      <button class="button button-secondary" type="button" data-open-demo>Agendar demo</button>
+    </div>
+  </footer>
+
+  <div class="modal" id="demoModal" hidden>
+    <div class="modal-dialog surface" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+      <div class="modal-head">
+        <div>
+          <h2 id="demoTitle">Demo DataShield</h2>
+          <p class="subtle">Solicitud local para presentar el flujo legaltech.</p>
+        </div>
+        <button class="icon-button" type="button" data-close-demo aria-label="Cerrar modal">×</button>
+      </div>
+
+      <form id="demoForm">
+        <div class="field-grid">
+          <label class="field">Nombre <input name="name" required autocomplete="name"></label>
+          <label class="field">Email <input name="email" type="email" required autocomplete="email"></label>
+        </div>
+
+        <label class="field" style="margin-top: 0.9rem;">Empresa <input name="company" autocomplete="organization"></label>
+
+        <div class="form-actions">
+          <button class="button button-primary" type="submit">Guardar solicitud</button>
+          <button class="button button-secondary" type="button" data-close-demo>Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const storageKey = "datashield-peru-state-v1";
+      const $ = (selector, scope = document) => scope.querySelector(selector);
+      const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+      const todayISO = () => new Date().toISOString().slice(0, 10);
+      const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+
+      const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      })[char]);
+
+      const state = {
+        arco: saved.arco || [],
+        checklist: saved.checklist || {},
+        clauseCount: saved.clauseCount || 0
+      };
+
+      const save = () => localStorage.setItem(storageKey, JSON.stringify(state));
+
+      function toast(message) {
+        const node = $("#toast");
+        node.textContent = message;
+        node.hidden = false;
+        clearTimeout(window.__toastTimer);
+        window.__toastTimer = setTimeout(() => {
+          node.hidden = true;
+        }, 2800);
+      }
+
+      const navLinks = $("#navLinks");
+      const menuToggle = $("#menuToggle");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      $$("#navLinks a").forEach((link) => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+
+      const riskForm = $("#riskForm");
+      const sectorRisk = { ecommerce: 13, health: 22, finance: 20, education: 15, saas: 12 };
+      const volumeRisk = { small: 6, medium: 12, large: 18, enterprise: 24 };
+
+      const missingControls = [
+        ["bankRegistered", 13, "Actualizar inventario y registro de bancos de datos."],
+        ["consentTrace", 16, "Versionar consentimientos y conservar evidencia por canal."],
+        ["arcoChannel", 14, "Publicar canal ARCO con responsables y trazabilidad."],
+        ["processorContracts", 12, "Regular encargados, proveedores y transferencias en contratos."],
+        ["incidentPlan", 11, "Crear bitácora de incidentes y protocolo de escalamiento."]
+      ];
+
+      function calculateRisk() {
+        const data = new FormData(riskForm);
+        let risk = sectorRisk[data.get("sector")] + volumeRisk[data.get("volume")];
+        const actions = [];
+
+        missingControls.forEach(([name, value, action]) => {
+          if (!data.get(name)) {
+            risk += value;
+            actions.push(action);
+          }
+        });
+
+        if (data.get("sensitiveData")) {
+          risk += 13;
+          actions.push("Aplicar controles reforzados para datos sensibles.");
+        }
+
+        risk = Math.min(100, risk);
+        const coverage = Math.max(0, 100 - risk);
+        const level = risk >= 76 ? "Riesgo crítico" : risk >= 56 ? "Riesgo alto" : risk >= 34 ? "Riesgo medio" : "Riesgo bajo";
+        const levelClass = risk >= 76 ? "critical" : risk >= 56 ? "high" : risk >= 34 ? "medium" : "";
+
+        const summary = {
+          "Riesgo bajo": "La operación muestra controles sólidos y documentación reutilizable.",
+          "Riesgo medio": "Hay controles esenciales pendientes para reducir exposición regulatoria.",
+          "Riesgo alto": "La operación necesita remediación prioritaria y evidencia más completa.",
+          "Riesgo crítico": "La exposición es elevada; conviene detener capturas sensibles hasta ordenar controles clave."
+        }[level];
+
+        $("#coverageScore").textContent = `${coverage}%`;
+        $("#heroCoverage").textContent = `${coverage}%`;
+        $("#scoreRing").style.setProperty("--angle", `${coverage * 3.6}deg`);
+        $("#riskLevel").textContent = level;
+        $("#riskLevel").className = `risk-level ${levelClass}`;
+        $("#riskSummary").textContent = summary;
+
+        const actionList = $("#actionList");
+        actionList.innerHTML = "";
+
+        const visibleActions = actions.length
+          ? actions.slice(0, 5)
+          : ["Mantener monitoreo mensual y conservar evidencia de cada cambio."];
+
+        visibleActions.forEach((action) => {
+          const li = document.createElement("li");
+          li.textContent = action;
+          actionList.appendChild(li);
+        });
+      }
+
+      riskForm.addEventListener("input", calculateRisk);
+
+      $("#resetRisk").addEventListener("click", () => {
+        riskForm.reset();
+        riskForm.elements.volume.value = "medium";
+        calculateRisk();
+        toast("Evaluación restaurada.");
+      });
+
+      const clauseForm = $("#clauseForm");
+      const clauseOutput = $("#clauseOutput");
+
+      function buildClause() {
+        const data = new FormData(clauseForm);
+        const company = data.get("company").trim() || "la empresa responsable";
+        const channel = data.get("channel");
+        const purpose = data.get("purpose").trim() || "gestionar la relación con el titular";
+        const dataTypes = data.get("dataTypes").trim() || "datos de identificación y contacto";
+        const retention = data.get("retention").trim() || "el plazo necesario para cumplir la finalidad informada";
+        const contact = data.get("contact").trim() || "privacidad@empresa.pe";
+        const thirdParties = data.get("thirdParties")
+          ? " Podremos encargar el tratamiento a proveedores tecnológicos, comerciales o de soporte, quienes deberán tratar los datos bajo instrucciones documentadas y medidas de seguridad razonables."
+          : "";
+
+        return `Autorizo a ${company}, en calidad de responsable del tratamiento, a recopilar y tratar mis datos personales obtenidos mediante ${channel}, incluyendo ${dataTypes}, con la finalidad de ${purpose}.
+
+El tratamiento se realizará conforme a la Ley N. 29733, su reglamento y las finalidades informadas al titular. Los datos serán conservados ${retention}.${thirdParties}
+
+El titular puede ejercer sus derechos de acceso, rectificación, cancelación u oposición escribiendo a ${contact}. La solicitud deberá permitir identificar al titular y precisar el derecho que desea ejercer.
+
+Esta cláusula es una base editable y debe ser revisada antes de incorporarse a documentos o formularios finales.`;
+      }
+
+      function generateClause(increment = true) {
+        clauseOutput.value = buildClause();
+
+        if (increment) {
+          state.clauseCount += 1;
+          $("#clauseCounter").textContent = state.clauseCount;
+          save();
+        }
+      }
+
+      clauseForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        generateClause(true);
+        toast("Cláusula generada.");
+      });
+
+      $("#clearClause").addEventListener("click", () => {
+        clauseOutput.value = "";
+        $("#copyState").textContent = "";
+      });
+
+      $("#copyClause").addEventListener("click", async () => {
+        if (!clauseOutput.value.trim()) generateClause(false);
+
+        try {
+          await navigator.clipboard.writeText(clauseOutput.value);
+          $("#copyState").textContent = "Texto copiado al portapapeles.";
+        } catch {
+          clauseOutput.focus();
+          clauseOutput.select();
+          document.execCommand("copy");
+          $("#copyState").textContent = "Texto seleccionado para copiar.";
+        }
+      });
+
+      $("#downloadClause").addEventListener("click", () => {
+        if (!clauseOutput.value.trim()) generateClause(false);
+
+        const blob = new Blob([clauseOutput.value], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "clausula-datashield.txt";
+        link.click();
+
+        URL.revokeObjectURL(url);
+      });
+
+      const arcoForm = $("#arcoForm");
+      arcoForm.elements.received.value = todayISO();
+
+      function businessDays(dateString, days) {
+        const date = new Date(`${dateString}T12:00:00`);
+        let added = 0;
+
+        while (added < days) {
+          date.setDate(date.getDate() + 1);
+          const day = date.getDay();
+
+          if (day !== 0 && day !== 6) added += 1;
+        }
+
+        return date;
+      }
+
+      function formatDate(date) {
+        return date.toLocaleDateString("es-PE", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        });
+      }
+
+      function slaDays(type) {
+        return type === "Acceso" ? 20 : 10;
+      }
+
+      function deadlineMeta(request) {
+        const deadline = businessDays(request.received, slaDays(request.type));
+        const now = new Date();
+
+        now.setHours(0, 0, 0, 0);
+        deadline.setHours(0, 0, 0, 0);
+
+        const diff = Math.ceil((deadline - now) / 86400000);
+
+        if (request.status === "Cerrada") return { text: "Cerrada", className: "" };
+        if (diff < 0) return { text: "Vencida", className: "late" };
+        if (diff <= 3) return { text: `${diff} días`, className: "warn" };
+
+        return { text: formatDate(deadline), className: "" };
+      }
+
+      function renderArco() {
+        const table = $("#arcoTable");
+        table.innerHTML = "";
+
+        state.arco.forEach((request) => {
+          const tr = document.createElement("tr");
+          const deadline = deadlineMeta(request);
+
+          tr.innerHTML = `
+            <td>${escapeHTML(request.id)}</td>
+            <td>${escapeHTML(request.holder)}</td>
+            <td>${escapeHTML(request.type)}</td>
+            <td><span class="deadline ${escapeHTML(deadline.className)}">${escapeHTML(deadline.text)}</span></td>
+            <td>
+              <select class="mini-select" data-status="${escapeHTML(request.id)}" aria-label="Estado de ${escapeHTML(request.id)}">
+                <option ${request.status === "Recibida" ? "selected" : ""}>Recibida</option>
+                <option ${request.status === "En revisión" ? "selected" : ""}>En revisión</option>
+                <option ${request.status === "Pendiente de firma" ? "selected" : ""}>Pendiente de firma</option>
+                <option ${request.status === "Cerrada" ? "selected" : ""}>Cerrada</option>
+              </select>
+            </td>
+            <td><button class="icon-button" type="button" data-delete="${escapeHTML(request.id)}" aria-label="Eliminar ${escapeHTML(request.id)}">×</button></td>
+          `;
+
+          table.appendChild(tr);
+        });
+
+        const openCount = state.arco.filter((item) => item.status !== "Cerrada").length;
+        $("#openArcoCount").textContent = openCount;
+        $("#heroArcoCount").textContent = state.arco.length;
+      }
+
+      arcoForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const data = new FormData(arcoForm);
+
+        const request = {
+          id: `AR-${String(Date.now()).slice(-5)}`,
+          holder: data.get("holder").trim(),
+          type: data.get("type"),
+          received: data.get("received"),
+          channel: data.get("channel"),
+          status: "Recibida"
+        };
+
+        state.arco.unshift(request);
+        save();
+        renderArco();
+
+        arcoForm.reset();
+        arcoForm.elements.received.value = todayISO();
+        toast("Solicitud ARCO agregada.");
+      });
+
+      $("#arcoTable").addEventListener("change", (event) => {
+        const id = event.target.dataset.status;
+        if (!id) return;
+
+        const request = state.arco.find((item) => item.id === id);
+        if (!request) return;
+
+        request.status = event.target.value;
+        save();
+        renderArco();
+      });
+
+      $("#arcoTable").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-delete]");
+        if (!button) return;
+
+        state.arco = state.arco.filter((item) => item.id !== button.dataset.delete);
+        save();
+        renderArco();
+        toast("Solicitud eliminada del panel.");
+      });
+
+      function seedArco(force = false) {
+        if (state.arco.length && !force) return;
+
+        const base = new Date();
+        const isoOffset = (days) => {
+          const date = new Date(base);
+          date.setDate(base.getDate() + days);
+          return date.toISOString().slice(0, 10);
+        };
+
+        state.arco = [
+          { id: "AR-1024", holder: "Camila Reyes", type: "Acceso", received: isoOffset(-4), channel: "Web", status: "En revisión" },
+          { id: "AR-1025", holder: "Luis Herrera", type: "Rectificación", received: isoOffset(-7), channel: "Email", status: "Pendiente de firma" },
+          { id: "AR-1026", holder: "María Torres", type: "Oposición", received: isoOffset(-1), channel: "Call center", status: "Recibida" }
+        ];
+
+        save();
+        renderArco();
+      }
+
+      $("#seedArco").addEventListener("click", () => {
+        seedArco(true);
+        toast("Ejemplos cargados.");
+      });
+
+      const checklistInputs = $$("#checklistBoard input[type='checkbox']");
+
+      checklistInputs.forEach((input) => {
+        input.checked = Boolean(state.checklist[input.dataset.task]);
+
+        input.addEventListener("change", () => {
+          state.checklist[input.dataset.task] = input.checked;
+          save();
+          updateChecklist();
+        });
+      });
+
+      function updateChecklist() {
+        const total = checklistInputs.length;
+        const done = checklistInputs.filter((input) => input.checked).length;
+        const percent = Math.round((done / total) * 100);
+
+        $("#auditProgress").textContent = `${percent}%`;
+        $("#auditProgressBar").style.width = `${percent}%`;
+        $("#heroChecklistText").textContent = `${percent}%`;
+        $("#heroChecklistBar").style.width = `${percent}%`;
+
+        $("#auditSummary").textContent = percent >= 75
+          ? "La documentación está cerca de un expediente de auditoría completo."
+          : "Completa tareas críticas para elevar la preparación documental.";
+      }
+
+      const modal = $("#demoModal");
+
+      function openDemo() {
+        modal.hidden = false;
+        document.body.classList.add("no-scroll");
+        setTimeout(() => $("#demoForm input").focus(), 0);
+      }
+
+      function closeDemo() {
+        modal.hidden = true;
+        document.body.classList.remove("no-scroll");
+      }
+
+      $$("[data-open-demo]").forEach((button) => button.addEventListener("click", openDemo));
+      $$("[data-close-demo]").forEach((button) => button.addEventListener("click", closeDemo));
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeDemo();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.hidden) closeDemo();
+      });
+
+      $("#demoForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        closeDemo();
+        event.target.reset();
+        toast("Solicitud de demo guardada localmente.");
+      });
+
+      $("#clauseCounter").textContent = state.clauseCount;
+
+      seedArco(false);
+      renderArco();
+      calculateRisk();
+      generateClause(false);
+      updateChecklist();
+    })();
+  </script>
 </body>
 </html>
